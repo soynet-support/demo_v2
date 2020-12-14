@@ -31,7 +31,7 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
    ```
    
 
-## Yolov4를 이용한 객체 감지 데모 
+## Yolov3를 이용한 객체 감지 데모 
 
 ### 사전 요구사항
 
@@ -51,7 +51,7 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
 $ git clone https://github.com/soynet-support/demo_yolov3
 ```
 
-#### 2.create folders & download yolov4 weight file 
+#### 2.create folders & download yolov3 weight file 
 ```
 $ cd demo_yolov3
 $ bash ./setup.sh
