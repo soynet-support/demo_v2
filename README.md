@@ -1,5 +1,5 @@
 AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io, "SOYNET Homepage")을 이용하여
-객체감지 모델 중 하나인 Yolo (v3-tiny, v3, v4)를 실행하는 데모를 수행하는 과정을 설명한다. 
+객체감지 모델 중 하나인 Yolo (v3-tiny, v3)를 실행하는 데모를 수행하는 과정을 설명한다. 
 
 ## SoyNet 개요
 
@@ -18,21 +18,10 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
  - NVIDIA, non-NVIDIA 기반 GPU 지원 (각각 CUDA, OpenCL 등의 기술 기반)
  - 제공형태는 library 파일 
    Windows는 dll, Linux는 so 파일 형태 (개발용 header와 lib는 별도)
-   
-### Demo    
- - 폴더 구성
-   ```
-   ├─mgmt         : SoyNet 실행환경
-   │  ├─configs   : 모델정의 파일 (*.cfg)와 임시 라이선스키 포함 
-   │  ├─engines   : SoyNet 실행 엔진 파일 생성 (최초 실행 시 1회 생성됨. 30초 가량 소요되며 이후는 생성 파일로 로딩)
-   │  ├─logs      : SoyNet log 파일 폴더
-   │  └─weights   : 테스트용 모델의 weight 파일포함 (변환 script을 이용하여 SoyNet용으로 변환된 것임)
-   └─samples      : 실행 파일을 포함한 빌드를 위한 폴더 
-      └─include   : SoyNet 빌드를 위한 header file 포함 폴더 
-   ```
-   
 
-## Yolo (v3-tiny, v3, v4)를 이용한 객체 감지 데모 
+ 
+
+## Yolo (v3-tiny, v3)를 이용한 객체 감지 데모 
 
 ### 사전 요구사항
 
@@ -43,15 +32,26 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
  - 운영체제 : Ubuntu 18.04LTS
  - NVIDIA 개발환경 : JetPack 4.4 (CUDA 10.2 / cuDNN 7.6.5 / TensorRT 7.0.0)
  - 기타 : OpenCV 3.4.5 (영상 파일 읽고 화면 출력하기 위한 용도)
-   설치 스크립트 : https://github.com/JetsonHacksNano/buildOpenCV
- 
+   참고) 설치 스크립트 : https://github.com/JetsonHacksNano/buildOpenCV
 
-### SoyNet 데모 실행
+
+### SoyNet Demo 
 
 #### 1.clone repository
 ```
 $ git clone https://github.com/soynet-support/demo_yolo_nano
 ```
+
+- 폴더 구성
+   ```
+   ├─mgmt         : SoyNet 실행환경
+   │  ├─configs   : 모델정의 파일 (*.cfg)와 임시 라이선스키 포함 
+   │  ├─engines   : SoyNet 실행 엔진 파일 생성 (최초 실행 시 1회 생성됨. 30초 가량 소요되며 이후는 생성 파일로 로딩)
+   │  ├─logs      : SoyNet log 파일 폴더
+   │  └─weights   : 테스트용 모델의 weight 파일포함 (변환 script을 이용하여 SoyNet용으로 변환된 것임)
+   └─samples      : 실행 파일을 포함한 빌드를 위한 폴더 
+      └─include   : SoyNet 빌드를 위한 header file 포함 폴더 
+   ```
 
 #### 2.download pre-trained weight files 
 ```
@@ -74,5 +74,8 @@ $ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./yolov3
 
 #### 참고사항
 
-1.OpenCV 설치 : 
- - 스크립트 원본 : https://github.com/JetsonHacksNano/buildOpenCV
+실행 테스트를 위한 docker 환경 구성 (SoyNet Demo는 포함되지 않으므로 위의 과정은 거쳐야함)
+'''
+wget https://soynet.io/demo/Dockerfile.jetsonNano
+docker build -t soynet_demo -f ./Dockerfile.jetsonNano .
+'''
