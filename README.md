@@ -76,7 +76,7 @@ $ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./yolov3
 
 실행 테스트를 위한 docker 환경 구성 (SoyNet Demo는 포함되지 않으므로 위의 과정은 거쳐야함)
 
-'''
+```
 wget https://soynet.io/demo/Dockerfile.jetsonNano 
 docker build -t soynet_demo -f ./Dockerfile.jetsonNano .
-'''
+```
