@@ -1,5 +1,5 @@
 AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io, "SOYNET Homepage")을 이용하여
-객체감지 모델 중 하나인 Yolov3 Yolov3-Tiny (on SoyNet v2)를 실행하는 데모를 수행하는 과정을 설명한다. 
+객체감지 모델 중 하나인 Yolo (v3-tiny, v3, v4)를 실행하는 데모를 수행하는 과정을 설명한다. 
 
 ## SoyNet 개요
 
@@ -14,10 +14,12 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
  - 고도의 Tac-Time을 요구하는 실시간 환경에의 대응 지원
    
 ### SoyNet 특징
- - Deep Learning 모델의 추론(inference) 전용 엔진 
+ - Deep Learning 모델의 추론(inference) 전용 엔진
  - NVIDIA, non-NVIDIA 기반 GPU 지원 (각각 CUDA, OpenCL 등의 기술 기반)
  - 제공형태는 library 파일 
    Windows는 dll, Linux는 so 파일 형태 (개발용 header와 lib는 별도)
+   
+### Demo    
  - 폴더 구성
    ```
    ├─mgmt         : SoyNet 실행환경
@@ -26,12 +28,11 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
    │  ├─logs      : SoyNet log 파일 폴더
    │  └─weights   : 테스트용 모델의 weight 파일포함 (변환 script을 이용하여 SoyNet용으로 변환된 것임)
    └─samples      : 실행 파일을 포함한 빌드를 위한 폴더 
-      ├─include   : SoyNet 빌드를 위한 header file 포함 폴더 
-      └─3rdParty  : 데모를 위한 3rd Party library 폴더 (OpenCV, CUDA/cuDNN,TensorRT 등등)
+      └─include   : SoyNet 빌드를 위한 header file 포함 폴더 
    ```
    
 
-## Yolov3를 이용한 객체 감지 데모 
+## Yolo (v3-tiny, v3, v4)를 이용한 객체 감지 데모 
 
 ### 사전 요구사항
 
@@ -40,33 +41,38 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
 
 #### 2.S/W
  - 운영체제 : Ubuntu 18.04LTS
- - NVIDIA 개발환경 : CUDA 10.1 / cuDNN 7.6.4 / TensorRT 6.0.1
+ - NVIDIA 개발환경 : JetPack 4.4 (CUDA 10.2 / cuDNN 7.6.5 / TensorRT 7.0.0)
  - 기타 : OpenCV 3.4.5 (영상 파일 읽고 화면 출력하기 위한 용도)
+   설치 스크립트 : https://github.com/JetsonHacksNano/buildOpenCV
  
 
-### SoyNet v2 데모 실행
+### SoyNet 데모 실행
 
-#### 1.Download
+#### 1.clone repository
 ```
-$ git clone https://github.com/soynet-support/demo_yolov3
+$ git clone https://github.com/soynet-support/demo_yolo_nano
 ```
 
-#### 2.create folders & download yolov3 weight file 
+#### 2.download pre-trained weight files 
 ```
-$ cd demo_yolov3
-$ bash ./setup.sh
+$ cd demo_yolo_nano
+$ bash ./mgmt/weights/download_weights.sh
 ```
 
 #### 3.Demo code Build
-Yolov3, Yolov3-Tiny 방식은 동일
 ```
-$ cd samples
-$ g++ -std=c++11 -m64 -o ../mgmt/yolov3 ./yolov3.cpp -I../include -L../lib -lSoyNet -lpthread `pkg-config opencv --cflags --libs`
+$ cd samples && make all 
 ```
 
 #### 4.Demo Code 실행
 최초 실행 시 엔진파일 생성에 시간이 소요됨(이후부터는 바로 로딩)
+```
+$ cd mgmt
+$ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./yolov3
+```
 
-```
-$ LD_LIBRARY_PATH=../lib:$LD_LIBRARY_PATH ./yolov3
-```
+
+#### 참고사항
+
+1.OpenCV 설치 : 
+ - 스크립트 원본 : https://github.com/JetsonHacksNano/buildOpenCV
