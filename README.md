@@ -39,7 +39,7 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
 
 #### 1.clone repository
 ```
-$ git clone https://github.com/soynet-support/demo_yolo_nano
+$ git clone https://github.com/soynet-support/demo_yolo_jetsonNano demo_yolo
 ```
 
 - 폴더 구성
@@ -55,20 +55,20 @@ $ git clone https://github.com/soynet-support/demo_yolo_nano
 
 #### 2.download pre-trained weight files 
 ```
-$ cd demo_yolo_nano
-$ bash ./mgmt/weights/download_weights.sh
+$ cd /demo_yolo/mgmt/weights
+$ bash ./download_weights.sh
 ```
 
 #### 3.Demo code Build
 ```
-$ cd samples && make all 
+$ cd /demo_yolo/samples && make all 
 ```
 
 #### 4.Demo Code 실행
 최초 실행 시 엔진파일 생성에 시간이 소요됨(이후부터는 바로 로딩)
 ```
-$ cd mgmt
-$ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./yolov3
+$ cd /demo_yolo/samples
+$ LD_LIBRARY_PATH=../mgmt:$LD_LIBRARY_PATH ./yolov3
 ```
 
 
