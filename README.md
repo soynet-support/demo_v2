@@ -75,4 +75,4 @@ $ LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./yolov3
 #### 참고사항
 
 실행 테스트를 위한 docker 환경 구성 (SoyNet Demo는 포함되지 않으므로 위의 과정은 거쳐야함)
-- 실행환 구 Repo : https://github.com/soynet-support/demo_docker
+- 실행환경 Repo : https://github.com/soynet-support/demo_docker
