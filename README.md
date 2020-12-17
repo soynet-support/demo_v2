@@ -39,7 +39,7 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
 
 #### 1.clone repository
 ```
-$ git clone https://github.com/soynet-support/demo_yolo_jetsonNano demo_yolo
+$ git clone https://github.com/soynet-support/demo_yolo_jetsonNano /demo_yolo
 ```
 
 - 폴더 구성
