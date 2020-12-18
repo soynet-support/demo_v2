@@ -33,8 +33,8 @@ AI Deep learning model을 위한 추론전 엔진인 [SoyNet](https://soynet.io,
 JetPack 4.4 (on JetsonNano)
 - 운영체제 : Ubuntu 18.04LTS
 * NVIDIA 개발환경 : JetPack 4.4 (CUDA 10.2 / cuDNN 7.6.5 / TensorRT 7.0.0)
-- 기타 : OpenCV 3.4.5 (영상 파일 읽고 화면 출력하기 위한 용도)
-  참고) 설치 스크립트 : https://github.com/JetsonHacksNano/buildOpenCV
+- 기타 : OpenCV 3.4.5 (영상 파일 읽고 화면 출력하기 위한 용도, docker 이용 시 설치되어 0있으면 안해도 됨) 
+  설치 & 빌드 스크립트) wget https://soynet.io/demo/opencv_345_install_jetsonNano.sh && bash ./buildOpenCV.sh
 
 
 ### SoyNet Demo 
