@@ -22,7 +22,7 @@
 
 ### **Folder Structure**
 
-   '''
+```
    ├─mgmt         : SoyNet execution env
    │  ├─configs   : model definitions (*.cfg) and trial license
    │  ├─engines   : SoyNet engine files (it's made at the first time execution.
@@ -31,7 +31,7 @@
    │  └─weights   : weight files for AI models
    └─samples      : folder to build sample demo 
       └─include   : header files
-   '''
+```
 
 ### **Demo of object detection with Yolo (v3-tiny, v3, v4)**
 
